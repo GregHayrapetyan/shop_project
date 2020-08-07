@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends 'admin_base.html' %}
+
+{% load static %}
+{% block title_block %}
+    {{ stock_name }} Shop
+{% endblock %}
+{% block body_block %}
+<div class="container-fluid">
+    <div class="row">
+
+       {% include 'sidebar.html' %}
+
+        <div class="col-8 m-auto">
+        {% if categories %}
+            <h3 class="my-4 ">Your categories:</h3><br /><br />
+                <div class="row">
+                {% for category in categories %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <a class="category-card" href="{% url 'market:category' category.id %}"><img class="card-img-top" src="/media/{{ category.picture }}" width="300" height="200" alt="{{ category }}'s items image"></a>
+                            <div class="card-body">
+                            <h4 class="card-title">
+                                <a class="nav-link" href="{% url 'market:category' category.id %}"><em>{{ category.name }}</em></a>
+                            </h4>
+                            </div>
+                    </div>
+                </div>
+                 {% endfor %}
+                </div>
+            <br />
+        {% else %}
+            <br /><center><h2 style="color: Black"><em>Your don't have category in your stock!</em></h2></center><br /><br /><br /><br />
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'customer_base.html' %}
+{% load static %}
+{% block title_block %}
+Contacts
+{% endblock %}
+{% block body_block %}
+<!-- Section: Contact v.1 -->
+<section class="my-5 container">
+
+    <!-- Section heading -->
+    <h2 class="h1-responsive font-weight-bold text-center my-5">Contact us</h2>
+
+    <!-- Grid row -->
+    <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-lg-7 mx-auto">
+
+            <!--Google map-->
+            <div id="map-container-section" class="map z-depth-1-half map-container-section mb-4" style="height: 400px">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3049.5675529177524!2d44.49757741488579!3d40.15191557962715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406abc11131bbb41%3A0xaa239dc60ad5c6a8!2zMzUg1LPVodaA1aXVo9Wr1bYg1YbVqtWk1aXVsNWrINaD1bjVstW41oEsINS11oDWh9Wh1bYsINWA1aHVtdWh1b3Vv9Wh1bY!5e0!3m2!1shy!2s!4v1596043768199!5m2!1shy!2s"
+                        width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0"></iframe>
+            </div>
+            <!-- Buttons-->
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <a class="btn-floating blue accent-1 contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </a>
+                    <p>35 Garegin Nzhdeh, Yerevan</p>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn-floating blue accent-1 contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                    <a href="tel:+37498255032" class="d-block">+37498255032</a>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn-floating blue accent-1 contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="mailto:greg.hayrapetyan@gmail.com" class="d-block">greg.hayrapetyan@gmail.com</a>
+                </div>
+            </div>
+        </div>
+        <!-- Grid column -->
+    </div>
+    <!-- Grid row -->
+</section>
+{% endblock %}

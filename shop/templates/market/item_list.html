@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends 'customer_base.html' %}
+{% load static %}
+{% block title_block %}
+{{ category.name }}
+{% endblock %}
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="my-4">{{ category.name }}</h3>
+        </div>
+        {% if items %}
+        <div class="row">
+            {% for item in items %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="{% url 'market:my_bag_add' item.id %}"><img class="card-img-top"
+                                                                         src="/media/{{ item.picture }}" width="300"
+                                                                         height="200"
+                                                                         alt="{{ item }}'s items image"></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            {{ item.name }}
+                        </h4>
+                        <h5>{{ item.price }} $</h5>
+                        <p class="card-text">{{ item.info }}<br/><h6>Available in stock: {{ item.quanity }}
+                        pieces.</h6></p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted"><a class="nav-link" href="{% url 'market:my_bag_add' item.id %}">By
+                            item</a></small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <h2 style="color: #000000">{{ category.name }} category don't have items!</h2>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

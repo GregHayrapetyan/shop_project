@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends 'customer_base.html' %}
+{% load static %}
+{% block title_block %}
+{{ stock.name }}
+{% endblock %}
+{% block body_block %}
+
+<div class="container">
+    <div class="row">
+        {% if categories %}
+        <h2 class="my-4 col-12" style="color: BLack">Category in {{ stock.name }} stock:</h2>
+        <div class="col-12">
+            <div class="row">
+                {% for category in categories %}
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <a class="category-card" href="{% url 'market:item_list' category.id %}"><img class="card-img-top"
+                                                                                                  src="/media/{{ category.picture }}"
+                                                                                                  width="300"
+                                                                                                  height="200"
+                                                                                                  alt="{{ category }}'s image"></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a class="nav-link" href="{% url 'market:item_list' category.id %}">{{ category.name }}</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+
+        {% else %}
+        <h2 class="col-12" style="color: Black">{{ stock.name }} don't have any category yet.</h2>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block title_block %}
+{{ username }} Profile
+{% endblock %}
+{% block body_block %}
+<!-- Section: Profile -->
+<section class="container text-center mb-5 p-1">
+
+    <!-- Section heading -->
+    <h2 class="h1-responsive font-weight-bold my-4">Your Profile</h2>
+
+    <!-- Grid row -->
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-lg-0 mb-4 m-auto">
+            <!--Card-->
+            <div class="card testimonial-card">
+                <!--Background color-->
+                <div class="card-up info-color"></div>
+                <!--Avatar-->
+                <div class="avatar mx-auto white">
+                    {% if avatar %}
+                    <img src="/media/{{ avatar }}" width="200" class="mt-4 rounded-circle img-fluid" height="300"
+                         alt="{{ username }}'s profile image"/>
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <!--Name-->
+                    <h4 class="font-weight-bold mb-4">{{ username }} </h4>
+                    <hr>
+                    <h4 class="font-weight-bold mb-4">Your Stock:</h4>
+                    <h4>
+                        <a class="nav-link" href="{% url 'market:my_stock' %}">{{ stockname }}</a>
+                    </h4>
+                    <hr>
+                    <a class="btn btn-default btn-rounded waves-effect waves-light"
+                       href="{% url 'market:edit_stock_name' id %}">Edit Stock Name!</a>
+                </div>
+            </div>
+            <!--Card-->
+        </div>
+        <!--Grid column-->
+
+    </div>
+    <!-- Grid row -->
+
+</section>
+<!-- Section: Profile-->
+{% endblock %}

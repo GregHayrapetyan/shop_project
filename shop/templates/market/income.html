@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block tittle_block %}
+Income
+{% endblock %}
+{% block body_block %}
+<div class="container-fluid">
+    <div class="row">
+        {% include 'sidebar.html' %}
+        <div class="col">
+            <div class="container">
+                <div class="row">
+                    {% if income %}
+                    <div class="col-lg-4">
+                        <h2 class="my-4">Your income: {{ income }} $ </h2>
+                    </div>
+                    <div class="col-lg-8">
+                        <h3 class="my-4">Sold items:</h3><br/>
+                        <div class="row">
+                            {% for i in sold_items %}
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <img class="card-img-top" src="/media/{{ i.picture }}" width="300" height="200"
+                                         alt="{{ i }}'s items image">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            {{ i.name }}
+                                        </h4>
+                                        <h5>{{ i.price }} $</h5>
+                                        <p class="card-text">{{ i.info }}<br/>{{ i.quanity }} pieces</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <div class="col py-5">
+                            <h3 style="color: Black">You have not any sold items.</h3>
+                        </div>
+
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endblock %}

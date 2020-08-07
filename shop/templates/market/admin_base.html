@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+
+    <link href="{% static 'css/shop-homepage.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/png">
+    <title>Market -
+        {% block title_block %}
+        Welcome to our online shop!
+        {% endblock %}
+    </title>
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark default-color fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'market:about_for_admin' %}"><em>Create your shop!</em></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                {% if user.is_authenticated %}
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'market:admin_profile' %}"><em>Profile</em>
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'market:my_stock' %}"><em>Your stock categories</em></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'market:about_for_admin' %}"><em>About us</em></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'market:contacts_for_admin' %}"><em>Contacts</em></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'market:logout' %}"><em>Logout</em></a>
+                    </li>
+                </ul>
+                {% else %}
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'market:login' %}"><em>Login</em></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'market:admin_register' %}"><em>Register as Admin</em></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'market:customer_register' %}"><em>Register as
+                            Customer</em></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'market:about_for_admin' %}"><em>About us</em></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'market:contacts_for_admin' %}"><em>Contacts</em></a>
+                    </li>
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <div class="main">
+        {% block body_block%}
+        {% endblock %}
+    </div>
+</div>
+<footer class="teal darken-4 py-3 text-center">
+    <p class="m-0 text-white"><em>Copyright &copy; Greg Hayrapetyan 2020</em></p>
+</footer>
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+
+</body>
+</html>

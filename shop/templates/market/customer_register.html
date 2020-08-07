@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends 'customer_base.html' %}
+{% load static %}
+{% block title_block %}
+    Customer Register
+{% endblock %}
+{% block body_block %}
+{% if is_register %}
+<div class="container">
+    <div class="row">
+        <div class="col-5 m-auto">
+            <form class="text-center border border-light p-5 my-3" role="form" method="post"
+                  action="{% url 'market:customer_register' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <p class="h4 mb-4">Sign up as customer</p>
+
+                <!-- First name -->
+                <input class="form-control" id="id_username" maxlength="30" name="username" type="text"
+                       placeholder="Username">
+                <small class="form-text text-muted mb-2">
+                    30 characters or fewer. Letters, digits and @/./+/-/_ only.
+                </small>
+
+                <!-- E-mail -->
+                <input id="id_email" name="email" type="email" class="form-control mb-4" placeholder="E-mail">
+
+                <!-- Password -->
+                <input type="password" id="id_password" name="password" class="form-control mb-4"
+                       placeholder="Password">
+
+                <!-- Confirm Password -->
+                <input type="password" id="id_re_password" name="re_password" class="form-control mb-4"
+                       placeholder="Confirm Password">
+
+
+                <!--File uploader-->
+                <label class="text-left d-block" for="id_avatar">Avatar:</label>
+
+                <input id="id_avatar" class="d-block" name="avatar" type="file" multiple accept="image/*,image/jpeg">
+
+
+                <!-- Sign up button -->
+                <button class="btn btn-info my-4 btn-block" type="submit" name="submit" value="Register">Sign up</button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% else %}
+<center><a class="nav-link" href="{% url 'market:customer_register' %}"><em><h3 style="color: #000000">Your passwords are different!</h3></em></a><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</center>
+{% endif %}
+{% endblock %}

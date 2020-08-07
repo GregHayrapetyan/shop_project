@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends 'admin_base.html' %}
+{% load static %}
+{% block title_block %}
+Add Category
+{% endblock %}
+{% block body_block %}
+<div class="container-fluid">
+    <div class="row">
+        {% include 'sidebar.html' %}
+        <div class="col-5 mx-auto mt-5">
+            <!-- Default form login -->
+
+            <form method="post" class=" border border-light p-5" action="{% url 'market:add_category' %}"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <p class="h4 mb-4 text-center">Add category here!</p>
+
+                <!-- Username -->
+                <input type="text" class="form-control mb-4" id="name" maxlength="30" name="name"
+                       placeholder="Category name">
+
+                <label class="required d-block text-left" for="picture">Category picture</label>
+
+
+                <!--File uploader-->
+                <input name="picture" class="d-block" id="picture" type="file" multiple accept="image/*,image/jpeg">
+
+                <!-- Save button -->
+
+                <input type="submit" ame="submit" value="Add Category" class="btn btn-default btn-rounded my-4">
+
+            </form>
+            <!-- Default form login -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
